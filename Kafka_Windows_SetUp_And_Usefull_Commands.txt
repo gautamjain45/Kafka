@@ -1,0 +1,36 @@
+Kafka Setup
+
+Prerequisites : Java 8
+
+1)Download kafka from internet.(downloaded file will be gzip file)
+2)Extract the downloaded kafka gzip file and put the extracted folder into "C:/"
+3)Set/add value of PATH environment variable "C:\kafka_2.13-2.6.0\bin\windows"
+4)create folder "C:\kafka_2.13-2.6.0\data"
+5)Create folder "C:\kafka_2.13-2.6.0\data\kafka"
+6)Create folder "C:\kafka_2.13-2.6.0\data\zookeeper"
+7)open file "C:\kafka_2.13-2.6.0\config\zookeeper.properties"
+8)Change value of datadir to "dataDir=C:/kafka_2.13-2.6.0/data/zookeeper"
+9) Start zookeeper using command in CMD "zookeeper-server-start.bat config\zookeeper.properties"
+10)open file "C:\kafka_2.13-2.6.0\config\server.properties"
+11)change the value of log.dirs to "log.dirs=C:/kafka_2.13-2.6.0/data/kafka"
+12)start kafka using command "kafka-server-start.bat config\server.properties"
+
+
+Create Topics
+1)Command to create topic 
+kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic first_topic --create --partitions 3 --replication-factor 1
+
+Note: Replication factor number should be totally equivalent with number of brokers running
+
+2)Command to check all the topics which are created in kafka
+kafka-topics.bat --zookeeper 127.0.0.1:2181 --list
+
+3)To get details about some topic
+kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic first_topic --describe
+Note: --topic first_topic "Here first_topic is a name of topic"
+
+4)Command to delete a topic
+kafka-topic --zookeeper 127.0.0.1:2181 --topic second_topic --delete
+
+Note: In window kafka might gets crashed due to bug in kafka for windows, the wayaround to delete a topic in windows is "we can remove directory from C:\kafka_2.13-2.6.0\data\kafka"
+Also a property "delete.topic.enable" should be set to true if we want to delete any topic, by default it's always true.
