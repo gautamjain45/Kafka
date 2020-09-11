@@ -30,7 +30,13 @@ kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic first_topic --describe
 Note: --topic first_topic "Here first_topic is a name of topic"
 
 4)Command to delete a topic
-kafka-topic --zookeeper 127.0.0.1:2181 --topic second_topic --delete
+kafka-topic.bat --zookeeper 127.0.0.1:2181 --topic second_topic --delete
 
 Note: In window kafka might gets crashed due to bug in kafka for windows, the wayaround to delete a topic in windows is "we can remove directory from C:\kafka_2.13-2.6.0\data\kafka"
 Also a property "delete.topic.enable" should be set to true if we want to delete any topic, by default it's always true.
+
+5)Stop Kafka server
+kafka-server-stop.bat
+
+6)Stop zookeeper
+zookeeper-server-stop.bat

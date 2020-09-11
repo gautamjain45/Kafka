@@ -1,0 +1,14 @@
+1) To produce messages in topic, below command is used
+kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic first_topic
+
+after executing above command , we are good to enter messages
+>Hello this is Kafka.
+>This is my 1st message.
+
+2)
+kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic first_topic --producer-property acks=all
+
+3)Create a topic on the fly and start producing to it
+kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic third_topic
+Note: This gives error, not able to map to broker.
+So its recommended to create a topic first and then try to produde it.

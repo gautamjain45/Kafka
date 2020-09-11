@@ -1,0 +1,6 @@
+1)To consume messages from producer
+kafka-console-consumer.bat --bootstrap-server 127.0.0.1:9092 --topic first_topic
+Note: It won't read messages from producer which were produced before launching kafka console consumer.
+
+2)Consume data from beginning
+kafka-console-consumer.bat --bootstrap-server 127.0.0.1:9092 --topic first_topic --from-beginning
