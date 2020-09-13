@@ -4,3 +4,14 @@ Note: It won't read messages from producer which were produced before launching 
 
 2)Consume data from beginning
 kafka-console-consumer.bat --bootstrap-server 127.0.0.1:9092 --topic first_topic --from-beginning
+
+3)Kafka console consumer group
+kafka-console-consumer.bat --bootstrap-server 127.0.0.1:9092 --topic first_topic --group my_first_application
+Note: If multiple consumer are open with group configuration, then the consumer will partitions within themselves to read the data from producer partitions.
+
+4)When we read all messages of console producer using configuration --from-beginning then it will read all the messages from producer from beginning and will set offset to the last message. Because of this if we close the consumer console and try to read the messages again from beginning, it won't read all messages coz offset is changed to last message, it will read all new message after last message.
+
+5) List console consmer groups
+kafka-consumer-groups --bootstrap-server localhost:9092 --list
+
+6)kafka-consumer-groups -bootstrap-server localhost:9092 --describe --group my_first_application
